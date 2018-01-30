@@ -1,0 +1,6 @@
+twig:
+    globals:
+        service_name: 'Skeleton Project'
+        enviroment: "%kernel.environment%"
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
