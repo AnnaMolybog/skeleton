@@ -2,26 +2,26 @@ version: "3.1"
 services:
     db:
       image: mysql:5.6
-      container_name: skeleton-mysql
+      container_name: jamstorage-mysql
       working_dir: /application
       volumes:
         - ./data:/docker-entrypoint-initdb.d
-        - mysql-skeleton-data:/var/lib/mysql
+        - mysql-jamstorage-data:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=skeleton
-        - MYSQL_USER=skeleton
-        - MYSQL_PASSWORD=skeleton
+        - MYSQL_DATABASE=jamstorage
+        - MYSQL_USER=jamstorage
+        - MYSQL_PASSWORD=jamstorage
 
     webserver:
       image: nginx:alpine
-      container_name: skeleton-webserver
+      container_name: jamstorage-webserver
       working_dir: /application
       volumes:
           - ../:/application
           - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       ports:
-       - "8003:80"
+       - "8000:80"
       links:
        - php-fpm
 
@@ -33,7 +33,7 @@ services:
             USERID: $user
         dockerfile: php-fpm/Dockerfile
       env_file: .env
-      container_name: skeleton-php-fpm
+      container_name: jamstorage-php-fpm
       working_dir: /application
       volumes:
         - ../:/application
@@ -45,12 +45,12 @@ services:
 
     phpmyadmin:
       image: phpmyadmin/phpmyadmin
-      container_name: skeleton-phpmyadmin
+      container_name: jamstorage-phpmyadmin
       ports:
-        - "8004:80"
+        - "8001:80"
       links:
         - db
 
 volumes:
-  mysql-skeleton-data:
+  mysql-jamstorage-data:
     external: false
