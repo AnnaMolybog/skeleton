@@ -2,7 +2,5 @@
 {% extends '@App/Base/base.html.twig' %}
 {% block page_header %}{{ service_name }}{% endblock %}
 {% block content %}
-    <h1 class="page-title">
-        Hello
-    </h1>
+    <a href="{{ path("sonata_admin_dashboard") }}">Go to Admin page</a>
 {% endblock content %}

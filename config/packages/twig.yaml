@@ -1,6 +1,6 @@
 twig:
     globals:
-        service_name: 'Skeleton Project'
+        service_name: 'Jam storage'
         enviroment: "%kernel.environment%"
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
